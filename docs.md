@@ -21,6 +21,7 @@ prop | type | default | required | description
 **quickFadeOutDuration** | `Number` | `200` | :x: | How long should the fadeOut animation run when the screen is tapped when the controls are visible? (in milliseconds) Default value is 200.
 **replayIcon** | `Unknown` | `ReplayIcon` | :x: | 
 **showControlsOnLoad** | `Boolean` | `false` | :x: | 
+**showControlsDefault** | `Boolean` | `false` | :x: | display control by default (will not hide the controls after loading)
 **showFullscreenButton** | `Boolean` | `true` | :x: | 
 **spinner** | `Function` | `Spinner` | :x: | 
 **switchToLandscape** | `Function` | `() => {   console.warn(     'Pass in this function `switchToLandscape` in props to enable fullscreening'   ); }` | :x: | 

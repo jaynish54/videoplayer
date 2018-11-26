@@ -122,6 +122,7 @@ export default class VideoPlayer extends React.Component {
     switchToPortrait: PropTypes.func,
 
     showControlsOnLoad: PropTypes.bool,
+    showControlsDefault: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -161,6 +162,7 @@ export default class VideoPlayer extends React.Component {
       );
     },
     showControlsOnLoad: false,
+    showControlsDefault: false,
   };
 
   constructor(props) {
@@ -188,7 +190,7 @@ export default class VideoPlayer extends React.Component {
   async componentDidMount() {
     this._setupNetInfoListener();
 
-    if (this.state.controlsState === CONTROL_STATES.SHOWN) {
+    if (this.state.controlsState === CONTROL_STATES.SHOWN && !this.props.showControlsDefault) {
       this._resetControlsTimer();
     }
 
@@ -200,6 +202,7 @@ export default class VideoPlayer extends React.Component {
         playsInSilentModeIOS: true,
         shouldDuckAndroid: true,
         interruptionModeAndroid: Audio.INTERRUPTION_MODE_ANDROID_DO_NOT_MIX,
+        playThroughEarpieceAndroid: true
       });
     } catch (e) {
       this.props.errorCallback({
@@ -577,7 +580,7 @@ export default class VideoPlayer extends React.Component {
                   width: centeredContentWidth,
                   height: centeredContentWidth,
                   borderRadius: centeredContentWidth,
-                }
+              }
               : {}
           }>
           {children}
